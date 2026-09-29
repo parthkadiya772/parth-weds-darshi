@@ -42,7 +42,8 @@ a{color:inherit}
 .wrap{width:min(1040px,100% - 36px);margin-inline:auto}
 section{position:relative}
 /* keep everything inside the screen width on phones (no sideways scrolling) */
-html{overflow-x:hidden;overscroll-behavior-x:none}
+html,body{overflow-x:hidden;overscroll-behavior-x:none}
+body{position:relative}
 body{max-width:100%;overscroll-behavior-x:none;touch-action:pan-y pinch-zoom}
 section,footer{overflow:hidden}
 @supports (overflow:clip){section,footer{overflow:clip}}
@@ -66,7 +67,7 @@ section,footer{overflow:hidden}
 @keyframes rise{0%{transform:translateY(0);opacity:0}15%{opacity:.9}100%{transform:translate(var(--x,20px),-60vh);opacity:0}}
 .hero-kicker{position:relative;z-index:2;margin:0;font-family:var(--deva);font-size:clamp(18px,2.2vw,24px);color:var(--gold-soft)}
 
-.envelope{position:relative;z-index:2;width:min(460px,86vw);aspect-ratio:1.25/1;perspective:1400px}
+.envelope{position:relative;z-index:2;width:min(460px,86vw,calc((100svh - 200px) * 1.25));aspect-ratio:1.25/1;perspective:1400px}
 .env-back,.env-front,.env-flap{position:absolute;left:0;right:0}
 .env-back{inset:0;border-radius:6px;box-shadow:0 30px 60px -18px rgba(0,0,0,.6);
   background:radial-gradient(circle at 50% 30%,rgba(210,155,28,.25),transparent 60%),repeating-linear-gradient(45deg,#8E2F3D 0 10px,#852B38 10px 20px)}
@@ -231,6 +232,20 @@ footer .tag{font-family:var(--display);color:#E0A526;font-size:22px;margin:40px 
 footer .phones a{color:#E0A526;text-decoration:none;margin:0 8px}
 footer .phones a:hover{text-decoration:underline}
 footer .made{margin-top:40px;font-size:13px;color:#D8AFAF}
+
+/* ================= PHONE HELD SIDEWAYS (short screens) ================= */
+@media (max-height:540px) and (orientation:landscape){
+  .hero-pin{min-height:0;padding-bottom:0;gap:8px}
+  .envelope{width:min(420px,70vw,calc((100svh - 110px) * 1.25))}
+  .hero-kicker{font-size:15px;margin-top:22px}
+  .hint{flex-direction:row;gap:8px;font-size:13px}
+  .hint svg{width:12px;height:18px}
+  .diyas{bottom:6px;justify-content:space-between;padding:0 4vw}
+  .diyas svg{width:34px}
+  .diyas svg:nth-child(n+3):nth-last-child(n+3){visibility:hidden}
+  .seal{width:60px;height:60px;font-size:18px}
+  .day-inner,.sec{padding-top:56px;padding-bottom:56px}
+}
 
 /* ================= FALLBACKS ================= */
 .static .env-back,.static .env-front,.static .env-flap,.static .seal,.static .hint{display:none}
@@ -455,7 +470,7 @@ footer .made{margin-top:40px;font-size:13px;color:#D8AFAF}
     st.style.left=((s+.5)/strings*100)+'%';
     st.style.setProperty('--t',(4+Math.random()*3)+'s');st.style.setProperty('--dl',(-Math.random()*4)+'s');
     const edge=Math.abs(s-(strings-1)/2)/((strings-1)/2);
-    const len=Math.round(4+edge*7+Math.random()*2);
+    let len=Math.round(4+edge*7+Math.random()*2);if(innerHeight<540)len=Math.max(2,Math.round(len*.4));
     for(let k=0;k<len;k++){const m=document.createElement('i');m.className='mari'+(k%4===3?' r':k%2?' y':'');m.style.setProperty('--s',(18-k*.3)+'px');st.appendChild(m)}
     const b=document.createElement('i');b.className='bell';st.appendChild(b);
     toran.appendChild(st);
@@ -547,7 +562,7 @@ footer .made{margin-top:40px;font-size:13px;color:#D8AFAF}
     .to('#halo',{scale:1.25,opacity:.7,duration:.8},.25)
     .to(flap,{rotateX:180,duration:1,ease:'power1.inOut'},.45)
     .set(flap,{zIndex:1},.95)
-    .to(card,{yPercent:-62,duration:1.1,ease:'power2.out'},1.5)
+    .to(card,{yPercent:()=>innerHeight<540?-42:-62,duration:1.1,ease:'power2.out'},1.5)
     .fromTo(chars,{opacity:0,yPercent:70,rotateX:-90},{opacity:1,yPercent:0,rotateX:0,stagger:.06,duration:.5,ease:'back.out(2)'},1.55)
     .from('.card-orn,.card-corner',{scale:0,opacity:0,stagger:.05,duration:.4,ease:'back.out(2)'},1.7)
     .set(card,{zIndex:6},2.6)
