@@ -45,7 +45,7 @@ section{position:relative}
 
 /* ================= HERO ================= */
 .hero{background:radial-gradient(900px 500px at 50% 105%,rgba(210,155,28,.35),transparent 60%),radial-gradient(700px 400px at 50% -10%,rgba(255,200,150,.18),transparent 60%),#5A1C26;color:#FBEFE4;overflow:hidden}
-.hero-pin{height:100vh;height:100svh;min-height:600px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;position:relative}
+.hero-pin{height:100vh;height:100svh;min-height:620px;padding-bottom:60px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;position:relative}
 .toran{position:absolute;top:0;left:0;right:0;height:0;z-index:1;pointer-events:none}
 .toran-row{position:absolute;top:0;left:-10px;right:-10px;height:26px;display:flex;justify-content:space-between;overflow:hidden}
 .string{position:absolute;top:10px;display:flex;flex-direction:column;align-items:center;transform-origin:50% 0;animation:sway var(--t,5s) ease-in-out var(--dl,0s) infinite alternate}
@@ -70,7 +70,7 @@ section{position:relative}
 .env-front::after{content:"";position:absolute;inset:0;
   background:linear-gradient(to top right,transparent 49.6%,rgba(123,42,54,.18) 50%,transparent 50.6%),
              linear-gradient(to top left,transparent 49.6%,rgba(123,42,54,.18) 50%,transparent 50.6%)}
-.env-front::before{content:"";position:absolute;left:8%;right:8%;bottom:9%;height:2px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+
 .env-flap{top:0;height:58%;z-index:4;transform-origin:50% 0;background:linear-gradient(180deg,#F4DEC6,#E6C3A3);clip-path:polygon(0 0,100% 0,50% 100%)}
 .seal{position:absolute;left:50%;top:58%;z-index:5;transform:translate(-50%,-50%);width:78px;height:78px;border-radius:50%;border:0;cursor:pointer;padding:0;
   background:radial-gradient(circle at 35% 30%,#A93A48,#7B2A36 60%,#4A141C);box-shadow:0 6px 14px rgba(0,0,0,.4),inset 0 0 0 5px rgba(0,0,0,.14),inset 0 0 0 7px rgba(232,195,106,.45);
@@ -78,17 +78,47 @@ section{position:relative}
 .seal em{font-style:italic;color:#F6D78E}
 .seal:hover{filter:brightness(1.1)}
 
-.card{position:absolute;left:5%;right:5%;top:5%;height:90%;z-index:2;background:#FFF8EE;color:#6B4A3E;border-radius:6px;container-type:inline-size;
+.card{position:absolute;left:5%;right:5%;top:5%;height:90%;z-index:2;overflow:hidden;background:radial-gradient(circle at 50% 48%,#FFFDF7,#FFF4E2 65%,#FBE6C8);color:#6B4A3E;border-radius:6px;container-type:inline-size;
   box-shadow:0 10px 30px -10px rgba(0,0,0,.35);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:5% 6%}
-.card::before{content:"";position:absolute;inset:3%;border:1px solid #E2BDB8;pointer-events:none;border-radius:3px}
+.card::before{content:"";position:absolute;inset:3%;border:1px solid #D8B25A;box-shadow:inset 0 0 0 3px #FFF8EE,inset 0 0 0 4px rgba(216,178,90,.55);pointer-events:none;border-radius:3px}
 .card .shri{font-family:var(--deva);color:#C08A12;font-size:3.6cqi;line-height:1.5}
 .card .shri + .shri{color:#8C4B55;font-size:3.2cqi}
 .card .label{margin-top:2.6cqi;font-size:2.4cqi;letter-spacing:.3em;color:#8C6E62}
-.card .names{font-family:var(--display);color:#7B2A36;font-size:12cqi;line-height:1.02;margin:1.5cqi 0}
+.card .names{font-family:var(--display);color:#7B2A36;font-size:12cqi;line-height:1.02;margin:1.5cqi 0;perspective:400px}
 .card .amp{display:flex;align-items:center;justify-content:center;gap:3cqi;font-style:italic;font-size:.5em;color:#C08A12}
 .card .amp::before,.card .amp::after{content:"";width:12cqi;height:1px;background:#D8B25A}
 .card .date{font-family:var(--display);font-size:4.4cqi;color:#7B2A36}
 .card .time{font-size:2.8cqi;color:#8C6E62}
+
+/* ---- richer opening ---- */
+.hero-glow{position:absolute;left:50%;top:48%;width:min(1100px,200vw);aspect-ratio:1;translate:-50% -50%;pointer-events:none;z-index:1}
+.rays{position:absolute;inset:0;border-radius:50%;background:repeating-conic-gradient(rgba(255,206,110,.22) 0 3deg,transparent 3deg 10deg);
+  -webkit-mask:radial-gradient(circle,#000 6%,transparent 60%);mask:radial-gradient(circle,#000 6%,transparent 60%);opacity:.3;animation:spin 90s linear infinite}
+.halo{position:absolute;inset:24%;border-radius:50%;background:radial-gradient(circle,rgba(255,214,130,.6),rgba(255,170,70,.14) 45%,transparent 70%);opacity:.4}
+.hero-mandala{position:absolute;inset:16%;color:#E8C36A;opacity:.16;animation:spin 140s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.diyas{position:absolute;left:0;right:0;bottom:14px;display:flex;justify-content:space-evenly;align-items:flex-end;z-index:2;pointer-events:none}
+.diyas svg{width:clamp(40px,5vw,62px);height:auto;overflow:visible;filter:drop-shadow(0 0 12px rgba(255,180,60,.45))}
+.env-deco{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none}
+.env-deco path,.env-deco rect{fill:none;stroke:#C9971C;stroke-width:1.3;vector-effect:non-scaling-stroke}
+.env-deco .dots{stroke-dasharray:1 5;stroke-linecap:round;stroke-width:2}
+.env-title{position:absolute;left:0;right:0;bottom:11%;text-align:center;font-family:var(--deva);color:#9A6A12;font-size:clamp(15px,4.2cqi,22px);letter-spacing:.04em}
+.env-front{container-type:inline-size}
+.seal::before{content:"";position:absolute;inset:-5px;border-radius:50%;box-shadow:0 0 0 0 rgba(232,195,106,.6);animation:pulse 2.4s ease-out infinite}
+.seal::after{content:"";position:absolute;inset:-11px;border-radius:50%;border:1px dashed rgba(232,195,106,.75);animation:spin 16s linear infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(232,195,106,.55)}100%{box-shadow:0 0 0 18px rgba(232,195,106,0)}}
+.card-corner{position:absolute;width:15cqi;height:15cqi;color:#C9971C;pointer-events:none}
+.card-corner.tl{top:5%;left:4%}.card-corner.tr{top:5%;right:4%;transform:scaleX(-1)}
+.card-corner.bl{bottom:5%;left:4%;transform:scaleY(-1)}.card-corner.br{bottom:5%;right:4%;transform:scale(-1)}
+.card-mandala{position:absolute;left:50%;top:58%;width:80cqi;aspect-ratio:1;translate:-50% -50%;color:#D29B1C;opacity:.13;pointer-events:none}
+.card-orn{display:block;width:34cqi;height:auto;color:#C9971C;position:relative}
+.card-orn.bottom{transform:scaleY(-1);margin-top:1cqi}
+.card .shri,.card .label,.card .names{position:relative}
+.card .nm{display:block}
+.card .ch{display:inline-block;background:linear-gradient(100deg,#7B2A36 0 40%,#E6B13A 50%,#7B2A36 60% 100%);background-size:320% 100%;background-position:100% 0;
+  -webkit-background-clip:text;background-clip:text;color:transparent;-webkit-text-fill-color:transparent;animation:foil 6s ease-in-out infinite;animation-delay:calc(var(--i) * .07s)}
+@keyframes foil{0%,55%{background-position:100% 0}85%,100%{background-position:0 0}}
+.card-shine{position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.75) 50%,transparent 65%);background-size:300% 100%;background-position:150% 0}
 .hint{position:relative;z-index:2;margin:0;display:flex;flex-direction:column;align-items:center;gap:6px;font-size:15px;color:#E9CDBE}
 .hint svg{animation:nudge 1.8s ease-in-out infinite}
 @keyframes nudge{50%{transform:translateY(6px)}}
@@ -133,24 +163,6 @@ section{position:relative}
 .chips{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:780px;margin:30px auto 0}
 .chip{background:var(--cream);border:1px solid var(--line);border-radius:12px;padding:16px 8px;text-align:center;font-family:var(--deva);color:var(--maroon);font-size:16px}
 @media (max-width:700px){.chips{grid-template-columns:repeat(2,1fr)}}
-
-/* ================= COUPLE ================= */
-.couple{overflow:hidden}
-.couple-grid{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:clamp(14px,3vw,44px)}
-.person{margin:0;text-align:center}
-.arch{position:relative;width:min(340px,100%);margin-inline:auto;aspect-ratio:3/4;border-radius:999px 999px 16px 16px;overflow:hidden;
-  box-shadow:0 0 0 1px var(--gold),0 0 0 9px var(--cream),0 0 0 10px var(--line),0 40px 60px -30px rgba(90,28,38,.5)}
-.portrait{position:absolute;inset:-12% 0;display:grid;place-items:center;background:radial-gradient(circle at 50% 36%,rgba(255,255,255,.25),transparent 45%),linear-gradient(170deg,#A94452,#7B2A36 55%,#4E1820)}
-.bride .portrait{background:radial-gradient(circle at 50% 36%,rgba(255,255,255,.35),transparent 45%),linear-gradient(170deg,#F2C9A8,#D9967E 55%,#A8615A)}
-.portrait::before{content:attr(data-initial);font-family:var(--display);font-size:clamp(110px,14vw,180px);color:rgba(255,240,220,.85);line-height:1}
-.portrait span{position:absolute;bottom:22%;font-style:italic;font-size:14px;color:rgba(255,245,235,.9)}
-.portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.person h3{font-family:var(--display);font-weight:400;color:var(--maroon);font-size:clamp(28px,3vw,38px);margin:28px 0 0;line-height:1.2}
-.person p{margin:4px 0 0;color:var(--muted);font-size:15px}
-.person p.edu{color:var(--text);font-size:16px}
-.amp-big{font-family:var(--display);font-style:italic;font-size:clamp(70px,9vw,120px);color:var(--gold);line-height:1;position:relative}
-.amp-big svg{position:absolute;left:50%;top:50%;width:1.7em;height:1.7em;transform:translate(-50%,-46%);overflow:visible}
-@media (max-width:720px){.couple-grid{grid-template-columns:1fr;gap:30px}.arch{width:min(300px,82%)}}
 
 /* ================= AAMANTRAN ================= */
 .aamantran .frame p{text-align:center;margin:0}
@@ -219,7 +231,7 @@ footer .made{margin-top:40px;font-size:13px;color:#D8AFAF}
 .static .env-back,.static .env-front,.static .env-flap,.static .seal,.static .hint{display:none}
 .static .card{position:relative;inset:auto;width:100%;height:auto;aspect-ratio:1/1}
 .static.envelope{aspect-ratio:auto}
-@media (prefers-reduced-motion:reduce){.sparkle,.string,.hint svg,.flame,.glow{animation:none}}
+@media (prefers-reduced-motion:reduce){.sparkle,.string,.hint svg,.flame,.glow,.rays,.hero-mandala,.seal::before,.seal::after,.card .ch{animation:none}}
 </style>
 </head>
 <body>
@@ -233,22 +245,34 @@ footer .made{margin-top:40px;font-size:13px;color:#D8AFAF}
 <!-- ================= HERO ================= -->
 <section class="hero" id="top">
   <div class="hero-pin">
+    <div class="hero-glow" aria-hidden="true"><div class="rays" id="rays"></div><div class="halo" id="halo"></div><svg class="hero-mandala" id="heroMandala" viewBox="-100 -100 200 200"></svg></div>
     <div class="toran" id="toran" aria-hidden="true"></div>
+    <div class="diyas" id="diyas" aria-hidden="true"></div>
     <div id="sparkles" aria-hidden="true"></div>
     <p class="hero-kicker">॥ श्री गणेशाय नमः ॥</p>
     <div class="envelope" id="envelope">
       <div class="env-back"></div>
       <div class="card" id="card">
+        <svg class="card-mandala" id="cardMandala" viewBox="-100 -100 200 200" aria-hidden="true"></svg>
+        <svg class="card-corner tl" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" aria-hidden="true"><path d="M2 38V11C2 6 6 2 11 2h27"/><path d="M8 30C8 18 18 8 30 8"/><path d="M13 14c5-3 10 0 9 5-1 3-5 4-7 2s0-5 3-4"/><circle cx="30" cy="8" r="1.4" fill="currentColor"/><circle cx="8" cy="30" r="1.4" fill="currentColor"/></svg><svg class="card-corner tr" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" aria-hidden="true"><path d="M2 38V11C2 6 6 2 11 2h27"/><path d="M8 30C8 18 18 8 30 8"/><path d="M13 14c5-3 10 0 9 5-1 3-5 4-7 2s0-5 3-4"/><circle cx="30" cy="8" r="1.4" fill="currentColor"/><circle cx="8" cy="30" r="1.4" fill="currentColor"/></svg><svg class="card-corner bl" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" aria-hidden="true"><path d="M2 38V11C2 6 6 2 11 2h27"/><path d="M8 30C8 18 18 8 30 8"/><path d="M13 14c5-3 10 0 9 5-1 3-5 4-7 2s0-5 3-4"/><circle cx="30" cy="8" r="1.4" fill="currentColor"/><circle cx="8" cy="30" r="1.4" fill="currentColor"/></svg><svg class="card-corner br" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" aria-hidden="true"><path d="M2 38V11C2 6 6 2 11 2h27"/><path d="M8 30C8 18 18 8 30 8"/><path d="M13 14c5-3 10 0 9 5-1 3-5 4-7 2s0-5 3-4"/><circle cx="30" cy="8" r="1.4" fill="currentColor"/><circle cx="8" cy="30" r="1.4" fill="currentColor"/></svg>
+        <svg class="card-orn" viewBox="0 0 120 26" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" aria-hidden="true"><path d="M60 3c3.2 4 3.2 8 0 12-3.2-4-3.2-8 0-12z" fill="currentColor" fill-opacity=".25"/><path d="M60 15c-8 7-20 7-26 1-4-4 0-9 4-6M60 15c8 7 20 7 26 1 4-4 0-9-4-6"/><path d="M4 16h22M94 16h22"/><circle cx="29" cy="16" r="1.4" fill="currentColor"/><circle cx="91" cy="16" r="1.4" fill="currentColor"/></svg>
         <div class="shri">॥ श्री गणेशाय नमः ॥</div>
         <div class="shri">॥ श्री महाकाल्यै नमः ॥</div>
         <div class="label">INVITATION OF WEDDING RECEPTION</div>
-        <div class="names">Parth<div class="amp">&amp;</div>Darshika</div>
+        <div class="names" id="names" aria-label="Parth and Darshika">Parth<div class="amp">&amp;</div>Darshika</div>
+        <svg class="card-orn bottom" viewBox="0 0 120 26" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" aria-hidden="true"><path d="M60 3c3.2 4 3.2 8 0 12-3.2-4-3.2-8 0-12z" fill="currentColor" fill-opacity=".25"/><path d="M60 15c-8 7-20 7-26 1-4-4 0-9 4-6M60 15c8 7 20 7 26 1 4-4 0-9-4-6"/><path d="M4 16h22M94 16h22"/><circle cx="29" cy="16" r="1.4" fill="currentColor"/><circle cx="91" cy="16" r="1.4" fill="currentColor"/></svg>
+        <div class="card-shine" id="cardShine"></div>
       </div>
-      <div class="env-front"></div>
-      <div class="env-flap" id="flap"></div>
+      <div class="env-front">
+        <svg class="env-deco" viewBox="0 0 125 100" preserveAspectRatio="none" aria-hidden="true"><path d="M4 4L62.5 50.5 121 4"/><path class="dots" d="M10 8L62.5 45 115 8"/><rect x="3.5" y="3.5" width="118" height="93" rx="2"/></svg>
+        <div class="env-title">शुभ आमंत्रण</div>
+      </div>
+      <div class="env-flap" id="flap">
+        <svg class="env-deco" viewBox="0 0 125 58" preserveAspectRatio="none" aria-hidden="true"><path d="M5 3.5L62.5 52 120 3.5"/><path class="dots" d="M14 7L62.5 45 111 7"/></svg>
+      </div>
       <button class="seal" id="seal" aria-label="Open the invitation">P<em>&amp;</em>D</button>
     </div>
-    <p class="hint" id="hint">Scroll to open
+    <p class="hint" id="hint">Scroll or tap the seal to open
       <svg width="18" height="26" viewBox="0 0 18 26" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="1" y="1" width="16" height="24" rx="8"/><line x1="9" y1="6" x2="9" y2="11"/></svg>
     </p>
   </div>
@@ -436,15 +460,29 @@ footer .made{margin-top:40px;font-size:13px;color:#D8AFAF}
   for(let i=0;i<24;i++){const e=document.createElement('span');e.className='sparkle';e.style.left=Math.random()*100+'%';e.style.top=(55+Math.random()*45)+'%';
     e.style.setProperty('--d',(7+Math.random()*7)+'s');e.style.setProperty('--delay',(-Math.random()*12)+'s');e.style.setProperty('--x',(Math.random()*60-30)+'px');sp.appendChild(e)}
 
-  /* ---------- mandala ---------- */
-  const md=document.getElementById('mandala');let g='';
-  const rings=[[16,24,8],[12,44,14],[24,64,10],[36,84,7]];
-  rings.forEach(([n,r,len],ri)=>{
-    for(let i=0;i<n;i++){const a=i/n*360;
-      g+=`<g transform="rotate(${a})"><path d="M0 ${-r+len} C ${len*.55} ${-r+len*.4}, ${len*.4} ${-r-len*.5}, 0 ${-r-len} C ${-len*.4} ${-r-len*.5}, ${-len*.55} ${-r+len*.4}, 0 ${-r+len}z" fill="none" stroke="currentColor" stroke-width=".6"/></g>`}
-    g+=`<circle r="${r+len+2}" fill="none" stroke="currentColor" stroke-width=".4" stroke-dasharray="${ri%2?'1 3':'none'}"/>`;
-  });
-  md.innerHTML=g+'<circle r="6" fill="currentColor" opacity=".6"/>';
+  /* ---------- mandalas ---------- */
+  function buildMandala(el){if(!el)return;let g='';
+    const rings=[[16,24,8],[12,44,14],[24,64,10],[36,84,7]];
+    rings.forEach(([n,r,len],ri)=>{
+      for(let i=0;i<n;i++){const a=i/n*360;
+        g+=`<g transform="rotate(${a})"><path d="M0 ${-r+len} C ${len*.55} ${-r+len*.4}, ${len*.4} ${-r-len*.5}, 0 ${-r-len} C ${-len*.4} ${-r-len*.5}, ${-len*.55} ${-r+len*.4}, 0 ${-r+len}z" fill="none" stroke="currentColor" stroke-width=".6"/></g>`}
+      g+=`<circle r="${r+len+2}" fill="none" stroke="currentColor" stroke-width=".4" stroke-dasharray="${ri%2?'1 3':'none'}"/>`;
+    });
+    el.innerHTML=g+'<circle r="6" fill="currentColor" opacity=".6"/>';}
+  ['mandala','heroMandala','cardMandala'].forEach(id=>buildMandala(document.getElementById(id)));
+
+  /* ---------- diyas ---------- */
+  const diyaWrap=document.getElementById('diyas');
+  const diyaCount=innerWidth<600?5:7;
+  for(let i=0;i<diyaCount;i++){
+    const dl=(-Math.random()*1.6).toFixed(2)+'s';
+    diyaWrap.insertAdjacentHTML('beforeend',`<svg viewBox="0 0 84 70"><circle class="glow" cx="42" cy="26" r="20" fill="#FFC34D" opacity=".22" style="animation-delay:${dl}"/><path class="flame" style="animation-delay:${dl}" d="M42 6c6 9 8 15 8 19a8 8 0 0 1-16 0c0-4 2-10 8-19z" fill="#F59A12"/><path class="flame" style="animation-delay:${dl}" d="M42 14c3 5 4 8 4 11a4 4 0 0 1-8 0c0-3 1-6 4-11z" fill="#FFE08A"/><path d="M10 38h64c-2 14-15 24-32 24S12 52 10 38z" fill="#B8423C"/><path d="M10 38h64" stroke="#E0A526" stroke-width="3" stroke-linecap="round"/><path d="M24 48c5 3 11 4 18 4s13-1 18-4" stroke="#E0A526" stroke-width="1.5" fill="none" stroke-linecap="round"/></svg>`);
+  }
+
+  /* ---------- split names into letters ---------- */
+  const namesEl=document.getElementById('names');
+  (function(){let k=0;const wrapName=t=>'<span class="nm" aria-hidden="true">'+[...t].map(c=>`<span class="ch" style="--i:${k++}">${c}</span>`).join('')+'</span>';
+    namesEl.innerHTML=wrapName('Parth')+'<div class="amp" aria-hidden="true">&amp;</div>'+wrapName('Darshika');})();
 
   /* ---------- marquee ---------- */
   const mq=document.getElementById('marquee'),tp=document.getElementById('mset');
@@ -464,7 +502,7 @@ footer .made{margin-top:40px;font-size:13px;color:#D8AFAF}
 
   /* ---------- falling petals (marigold + rose) ---------- */
   const cv=document.getElementById('petals'),ctx=cv.getContext('2d');
-  let W,H,petals=[],wind=0,lastY=scrollY;
+  let W,H,petals=[],burst=[],wind=0,lastY=scrollY;
   const cols=['#F59A12','#FBBF2E','#F7A928','#C0303F','#E0566A','#FFD35C'];
   function size(){const dpr=Math.min(2,devicePixelRatio||1);W=innerWidth;H=innerHeight;cv.width=W*dpr;cv.height=H*dpr;ctx.setTransform(dpr,0,0,dpr,0,0)}
   function mk(top){return{x:Math.random()*W,y:top?-20:Math.random()*H,r:4+Math.random()*6,rot:Math.random()*6.3,vr:(Math.random()-.5)*.05,vy:.4+Math.random()*.8,sw:.5+Math.random()*1.2,ph:Math.random()*6.3,fl:Math.random()*6.3,c:cols[(Math.random()*cols.length)|0],a:.55+Math.random()*.35}}
@@ -473,29 +511,52 @@ footer .made{margin-top:40px;font-size:13px;color:#D8AFAF}
   function loop(){ctx.clearRect(0,0,W,H);const y=scrollY,dy=y-lastY;lastY=y;wind+=(dy*.06-wind)*.08;
     for(const p of petals){p.ph+=.012;p.fl+=.03;p.rot+=p.vr;p.y+=p.vy-wind*.5;p.x+=Math.sin(p.ph)*p.sw*.5+wind*.3;
       if(p.y>H+20)Object.assign(p,mk(true));if(p.y<-40)p.y=H+10;if(p.x>W+20)p.x=-20;if(p.x<-20)p.x=W+20;draw(p)}
+    for(let i=burst.length-1;i>=0;i--){const b=burst[i];b.vx*=.965;b.vy=b.vy*.965+.13;b.x+=b.vx+wind*.3;b.y+=b.vy;b.rot+=b.vr*3;b.fl+=.08;draw(b);if(b.y>H+30)burst.splice(i,1)}
     requestAnimationFrame(loop)}
+  window.petalBurst=function(n){if(reduce)return;const x=W/2,y=H*.46;for(let i=0;i<n&&burst.length<220;i++){const a=Math.random()*Math.PI*2,sp=5+Math.random()*11,p=mk(false);p.x=x;p.y=y;p.vx=Math.cos(a)*sp;p.vy=Math.sin(a)*sp-4;p.r=5+Math.random()*7;p.a=.9;burst.push(p)}};
   if(!reduce){size();addEventListener('resize',size);const n=innerWidth<700?16:28;for(let i=0;i<n;i++)petals.push(mk(false));requestAnimationFrame(loop)}else cv.remove();
 
   if(!hasGsap||reduce){document.getElementById('envelope').classList.add('static');document.getElementById('seal').remove();return}
   gsap.registerPlugin(ScrollTrigger);
 
-  /* ---------- hero envelope ---------- */
+  /* ---------- hero: entrance on load ---------- */
   const card=$('card'),flap=$('flap'),seal=$('seal');
-  const finalScale=()=>Math.max(1,Math.min(1.6,innerHeight*.8/card.offsetHeight,innerWidth*.94/card.offsetWidth));
-  const tl=gsap.timeline({scrollTrigger:{trigger:'.hero-pin',start:'top top',end:'+=180%',scrub:.8,pin:true,anticipatePin:1,invalidateOnRefresh:true}});
+  const chars=card.querySelectorAll('.ch');
+  gsap.timeline({delay:.15})
+    .from('.envelope',{y:-120,rotate:-8,opacity:0,duration:1.4,ease:'power3.out'})
+    .from('#diyas svg',{y:50,opacity:0,stagger:.1,duration:.8,ease:'back.out(1.8)'},'-=1')
+    .from('.hero-kicker',{y:-20,opacity:0,duration:.8},'-=.9')
+    .from('#halo',{scale:.4,opacity:0,duration:1.6,ease:'power2.out'},0)
+    .from('#hint',{opacity:0,duration:.6},'-=.3')
+    .add(()=>gsap.to('.envelope',{y:-8,duration:2.2,ease:'sine.inOut',yoyo:true,repeat:-1}));
+
+  /* ---------- hero: scroll to open ---------- */
+  const finalScale=()=>Math.max(1,Math.min(1.6,innerHeight*.78/card.offsetHeight,innerWidth*.94/card.offsetWidth));
+  const tl=gsap.timeline({scrollTrigger:{trigger:'.hero-pin',start:'top top',end:'+=220%',scrub:.8,pin:true,anticipatePin:1,invalidateOnRefresh:true}});
+  let burstDone=false;
   tl.to('#hint',{opacity:0,y:10,duration:.4},0)
     .to('.hero-kicker',{opacity:0,y:-20,duration:.6},0)
     .to('.toran',{y:-60,duration:3},0)
     .to(seal,{scale:1.25,duration:.25},0)
     .to(seal,{scale:0,opacity:0,rotate:40,duration:.35},.25)
+    .to('#halo',{scale:1.25,opacity:.7,duration:.8},.25)
     .to(flap,{rotateX:180,duration:1,ease:'power1.inOut'},.45)
     .set(flap,{zIndex:1},.95)
     .to(card,{yPercent:-62,duration:1.1,ease:'power2.out'},1.5)
+    .fromTo(chars,{opacity:0,yPercent:70,rotateX:-90},{opacity:1,yPercent:0,rotateX:0,stagger:.06,duration:.5,ease:'back.out(2)'},1.55)
+    .from('.card-orn,.card-corner',{scale:0,opacity:0,stagger:.05,duration:.4,ease:'back.out(2)'},1.7)
     .set(card,{zIndex:6},2.6)
     .to(['.env-back','.env-front','#flap'],{y:()=>innerHeight*.7,opacity:0,duration:1.1,ease:'power2.in'},2.6)
     .to(card,{yPercent:0,scale:finalScale,duration:1.2,ease:'power2.inOut'},2.65)
-    .to({},{duration:.5});
-  seal.addEventListener('click',()=>{const st=tl.scrollTrigger;scrollTo({top:st.start+(st.end-st.start)*.62,behavior:'smooth'})});
+    .to('#halo',{scale:2.1,opacity:1,duration:1.2},2.65)
+    .to('#rays',{opacity:1,scale:1.15,duration:1.2},2.65)
+    .to('#heroMandala',{opacity:.34,scale:1.2,duration:1.2},2.65)
+    .to('#diyas',{y:20,opacity:.85,duration:1.2},2.65)
+    .add(()=>{if(tl.scrollTrigger&&tl.scrollTrigger.direction>0&&!burstDone){burstDone=true;window.petalBurst(innerWidth<700?70:120)}},3.3)
+    .fromTo('#cardShine',{backgroundPosition:'150% 0'},{backgroundPosition:'-50% 0',duration:.8,ease:'none'},3.4)
+    .to({},{duration:.7});
+  ScrollTrigger.create({trigger:'.hero-pin',start:'top top',end:'+=40%',onLeaveBack:()=>{burstDone=false}});
+  seal.addEventListener('click',()=>{const st=tl.scrollTrigger;scrollTo({top:st.start+(st.end-st.start)*.72,behavior:'smooth'})});
 
   /* ---------- section headers ---------- */
   gsap.utils.toArray('.head').forEach(h=>{
@@ -517,20 +578,6 @@ footer .made{margin-top:40px;font-size:13px;color:#D8AFAF}
   gsap.from('.shloka span',{clipPath:'inset(0 100% 0 0)',duration:1.2,stagger:.5,ease:'power2.inOut',delay:.6,scrollTrigger:{trigger:'#shlokaCard',start:'top 80%'}});
   gsap.from('.translation',{opacity:0,y:14,duration:.8,delay:1.8,scrollTrigger:{trigger:'#shlokaCard',start:'top 80%'}});
   gsap.from('.chip',{y:40,opacity:0,rotate:(i)=>i%2?4:-4,stagger:.12,duration:.7,ease:'back.out(1.7)',scrollTrigger:{trigger:'.chips',start:'top 88%'}});
-
-  /* ---------- couple ---------- */
-  const mm=gsap.matchMedia();
-  mm.add('(min-width: 721px)',()=>{
-    gsap.from('.groom',{x:()=>-innerWidth*.35,rotate:-8,opacity:0,ease:'none',scrollTrigger:{trigger:'.couple-grid',start:'top 95%',end:'center 60%',scrub:1}});
-    gsap.from('.bride',{x:()=>innerWidth*.35,rotate:8,opacity:0,ease:'none',scrollTrigger:{trigger:'.couple-grid',start:'top 95%',end:'center 60%',scrub:1}});
-  });
-  mm.add('(max-width: 720px)',()=>{
-    gsap.from('.groom',{x:-120,rotate:-6,opacity:0,ease:'none',scrollTrigger:{trigger:'.groom',start:'top 95%',end:'center 70%',scrub:1}});
-    gsap.from('.bride',{x:120,rotate:6,opacity:0,ease:'none',scrollTrigger:{trigger:'.bride',start:'top 95%',end:'center 70%',scrub:1}});
-  });
-  gsap.from('.amp-big',{scale:.2,rotate:-120,opacity:0,ease:'none',scrollTrigger:{trigger:'.amp-big',start:'top 90%',end:'center 60%',scrub:1}});
-  gsap.to('.amp-big svg',{rotate:360,ease:'none',scrollTrigger:{trigger:'.couple',start:'top bottom',end:'bottom top',scrub:true}});
-  gsap.utils.toArray('.portrait').forEach(p=>gsap.fromTo(p,{yPercent:-8},{yPercent:8,ease:'none',scrollTrigger:{trigger:p.parentElement,start:'top bottom',end:'bottom top',scrub:true}}));
 
   /* ---------- aamantran ---------- */
   const at=gsap.timeline({scrollTrigger:{trigger:'#aamCard',start:'top 78%'}});
